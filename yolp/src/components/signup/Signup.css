@@ -1,176 +1,132 @@
 *,
 *:before,
-*:after,
-ul,
-li,
-a,
-button,
-input,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-img,
-image,
-svg,
-path,
-g,
-canvas {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: transparent;
-  border: none;
-  text-decoration: none;
-  font-family: "Roboto";
-  user-select: none;
-  list-style: none;
-  position: relative;
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.html,
-body {
-  background-color: #fafafa;
-  margin: 0;
-  padding: 0;
+.background {
+    width: 430px;
+    height: 520px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    background-color: #080710;
+    border-radius: 2%;
 }
 
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.12);
-  background-color: #f2f8ff;
-  text-transform: capitalize;
-  cursor: pointer;
-}
-.button:hover, .button:focus {
-  transition: 0.15s ease-in-out;
+.background .shape {
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
 }
 
-.login-container {
-  width: 400px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  margin: 0 auto;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.login-container .title {
-  text-transform: capitalize;
-  font-size: 1.6em;
-  font-weight: 300;
-  padding: 60px 0;
-  padding-bottom: 10px;
-}
-.login-container .login-button {
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  width: 60%;
-  padding: 20px 15px;
-  background-color: #007aff;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 400;
-  margin: 40px 0;
-}
-.login-container .login-button:hover, .login-container .login-button:focus {
-  box-shadow: 0px 3px 20px 3px rgba(0, 122, 255, 0.3);
-  background-color: #007aff;
+.shape:first-child {
+    background: linear-gradient(#1845ad,
+            #23a2f6);
+    left: -80px;
+    top: -80px;
 }
 
-.fluid-input {
-  width: 80%;
-  height: 50px;
-  max-width: 450px;
-  position: relative;
-  margin: 15px 0px;
+.shape:last-child {
+    background: linear-gradient(to right,
+            #ff512f,
+            #f09819);
+    right: -30px;
+    bottom: -80px;
 }
-.fluid-input-bg {
-  width: calc(100% - 10%);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  position: absolute;
-  left: 5%;
-  top: 0;
-  color: #007aff;
-  font-weight: 400;
-  font-size: 0.9em;
-  transition: 0.3s ease-in-out;
-  text-transform: capitalize;
+
+form {
+    height: 600px;
+    width: 400px;
+    background-color: rgba(255, 255, 255, 0.13);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    padding: 50px 35px;
 }
-.fluid-input-holder {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  will-change: transform, box-shadow;
-  transition: 0.2s ease-in-out;
-  background-color: #f1f3f4;
+
+form * {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    outline: none;
+    border: none;
 }
-.fluid-input-input {
-  width: inherit;
-  height: inherit;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background-color: #f1f3f4;
-  font-size: 1.05em;
-  padding: 0 5%;
+
+form h3 {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
 }
-.fluid-input-input:focus {
-  outline: None;
+
+label {
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
 }
-.fluid-input-label {
-  width: calc(100% - 10%);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: start;
-  flex-direction: row;
-  position: absolute;
-  font-size: 1em;
-  left: 5%;
-  top: 0;
-  color: #007aff;
-  font-weight: 400;
-  text-transform: capitalize;
-  pointer-events: none;
-  transition: transform 0.2s ease-in-out, font-size 0.2s 0.15s ease-in-out;
-  will-change: transform, font-size;
+
+input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 3px;
+    padding: 0 10px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 300;
 }
-.fluid-input--focus .fluid-input-holder {
-  box-shadow: 0px 5px 20px 0px rgba(0, 12, 47, 0.3);
+
+::placeholder {
+    color: #e5e5e5;
 }
-.fluid-input--focus .fluid-input-bg {
-  transform: translateY(-40px);
-  transition: 0.2s 0.2s ease-in-out;
+
+button {
+    margin-top: 50px;
+    width: 100%;
+    background-color: #ffffff;
+    color: #080710;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.fluid-input--focus .fluid-input-label {
-  transform: translateY(-40px);
+
+.social {
+    margin-top: 30px;
+    display: flex;
 }
-.fluid-input--open .fluid-input-label {
-  transform: translateY(-40px);
+
+.social div {
+    background: red;
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: rgba(255, 255, 255, 0.27);
+    color: #eaf0fb;
+    text-align: center;
+}
+
+.social div:hover {
+    background-color: rgba(255, 255, 255, 0.47);
+}
+
+.social .fb {
+    margin-left: 25px;
+}
+
+.social i {
+    margin-right: 4px;
 }

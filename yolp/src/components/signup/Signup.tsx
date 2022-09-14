@@ -1,117 +1,79 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+import YOLP_API from "../../utils/ApiConfig";
 import "./Signup.css"
 
+/*
+ * export default: a module is a self contained unit that can expose assets to other modules using export, and acquire assets from other modules using import. 
+ */
 export default function Signup() {
+    /* 
+     * What is a Hook? A Hook is a special function that lets you “hook into” React features. 
+     * For example, useState is a Hook that lets you add React state to function components.
+     */
     const [username, setUsername] = useState("");
     const [password1, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
-    const [focusedUsername, setFocusedUsername] = useState(false);
-    const [focusedPassword, setFocusedPassword] = useState(false);
-    const [confirmFocusedPassword, confirmSetFocusedPassword] = useState(false);
     const navigate = useNavigate();
 
-    /* callback function */
     function updateUsername(e: any) {
-        if (e.target.value != "") {
-            setFocusedUsername(true);
-        } else {
-            setFocusedUsername(false);
-        }
         setUsername(e.target.value);
     }
 
-    /* callback function */
     function updatePassword(e: any) {
-        if (e.target.value != "") {
-            setFocusedPassword(true);
-        } else {
-            setFocusedPassword(false);
-        }
         setPassword(e.target.value);
     }
 
-    /* callback function */
     function confirmPassword(e: any) {
-        if (e.target.value != "") {
-            confirmSetFocusedPassword(true);
-        } else {
-            confirmSetFocusedPassword(false);
-        }
         setPassword2(e.target.value);
-    }
-
-    /* callback function */
-    function handleException(response: Response) {
-        if (response.ok) {
-            alert("Account created successfully!");
-            navigate("/login");
-        }
-        else {
-            response.json().then(data => alert(data.message));
-        }
     }
 
     function submit(event: { preventDefault: () => void; }) {
         event.preventDefault();
 
-        const request = {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username: username,
-                password1: password1,
-                password2: password2
+        YOLP_API.post("/users/signup", {
+            username: username,
+            password1: password1,
+            password2: password2
+        })
+            .then(() => {
+                alert("Account created successfully!");
+                navigate("/login");
             })
-        }
-
-        console.log("REQUEST" + request);
-
-        fetch("http://localhost:8080/yolp/users/signup", request)
-            .then(response => handleException(response));
+            .catch(error => alert(error.response.data.message));
 
         setUsername("");
         setPassword("");
         setPassword2("");
     }
 
-    function updateFocused(event: any) {
-        console.log(event)
-        event.stopPropagation();
-        console.log(event);
-    }
-
     return (
-        <div className="login-container">
-            <div className="title">Register</div>
-            <div className={focusedUsername ? "fluid-input fluid-input--focus" : "fluid-input"} style={{ margin: "15px 0px" }}>
-                <div className="fluid-input-holder">
-                    <input id="name" className="fluid-input-input " type="text" value={username} onChange={updateUsername}></input>
-                    <label className="fluid-input-label">
-                        Username
-                    </label>
+        <>
+            <head>
+                <link rel="stylesheet" href="https://fonts.gstatic.com" />
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+                <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" />
+            </head>
+            <div className="register">
+                <div className="background">
+                    <div className="shape"></div>
+                    <div className="shape"></div>
                 </div>
+                <form onSubmit={submit}>
+                    <h3>Register</h3>
+
+                    <label htmlFor="username">Username</label>
+                    <input type="text" placeholder="Username" id="username" value={username} onChange={updateUsername} />
+
+                    <label htmlFor="password">Password</label>
+                    <input type="password" placeholder="Password" id="password" value={password1} onChange={updatePassword} />
+
+                    <label htmlFor="password">Confirm Password</label>
+                    <input type="password" placeholder="Confirm Password" id="password" value={password2} onChange={confirmPassword} />
+
+                    <button type="submit">Create Account</button>
+                </form>
             </div>
-            <div className={focusedPassword ? "fluid-input fluid-input--focus" : "fluid-input"} style={{ margin: "15px 0px" }}>
-                <div className="fluid-input-holder">
-                    <input id="name" className="fluid-input-input " type="password" value={password1} onChange={updatePassword}></input>
-                    <label className="fluid-input-label">
-                        Password
-                    </label>
-                </div>
-            </div>
-            <div className={confirmFocusedPassword ? "fluid-input fluid-input--focus" : "fluid-input"} style={{ margin: "15px 0px" }}>
-                <div className="fluid-input-holder">
-                    <input id="name" className="fluid-input-input " type="password" value={password2} onChange={confirmPassword}></input>
-                    <label className="fluid-input-label">
-                        Confirm Password
-                    </label>
-                </div>
-            </div>
-            <div className="button login-button" onClick={submit}>
-                Register
-            </div>
-        </div>
+        </>
     );
 }
