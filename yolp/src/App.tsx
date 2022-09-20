@@ -3,24 +3,24 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Signup from './pages/signup/Signup';
 import Login from './pages/login/LoginPage';
 import Navbar from './pages/navbar/Navbar';
-import User from './models/User';
 import AdminPage from './pages/admin/AdminPage';
+import Principal from './models/Principal';
 import './App.css';
 
 function App() {
-  const [user, setUser] = useState<User | null>(null);
+  const [principal, setPrincipal] = useState<Principal | null>(null);
 
   useEffect(() => {
     const data = window.sessionStorage.getItem("user");
-    if (data !== null) setUser(JSON.parse(data));
+    if (data !== null) setPrincipal(JSON.parse(data));
   }, []);
 
   return (
     <BrowserRouter>
-      <Navbar currentUser={user} />
+      <Navbar currentUser={principal} />
       <Routes>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Login currentUser={user} setCurrentUser={setUser} />}></Route>
+        <Route path="/login" element={<Login currentUser={principal} setCurrentUser={setPrincipal} />}></Route>
         <Route path="/admin" element={<AdminPage />}></Route>
       </Routes>
     </BrowserRouter>

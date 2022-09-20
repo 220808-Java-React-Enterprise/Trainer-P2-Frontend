@@ -1,9 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
-import User from "../../models/User";
+import Principal from "../../models/Principal";
 import "./Navbar.css";
 
 interface UserProp {
-    currentUser: User | null;
+    currentUser: Principal | null;
 }
 
 export default function Navbar({ currentUser }: UserProp) {
@@ -13,6 +13,7 @@ export default function Navbar({ currentUser }: UserProp) {
 
     function logout() {
         window.sessionStorage.removeItem("user");
+        window.sessionStorage.removeItem("auth-token");
         navigate("/");
     }
 

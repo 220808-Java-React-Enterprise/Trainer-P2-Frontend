@@ -68,7 +68,7 @@ export default function Register() {
                         <label htmlFor="password">Confirm Password</label>
                         <input type="password" placeholder="Confirm Password" id="password" value={password2} onChange={confirmPassword} />
 
-                        <button type="submit">Create Account</button>
+                        <button className="signup-button" type="submit">Create Account</button>
                     </form>
                 </div>
             </body>
