@@ -1,18 +1,17 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import User from "../../models/User";
 import YOLP_API from "../../utils/ApiConfigs";
-import "./Login.css";
+import "./LoginPage.css";
 
 interface UserProp {
     currentUser: User | null;
-    updateCurrentUser: Function;
+    setCurrentUser: Function;
 }
-
 /*
  * export default: a module is a self contained unit that can expose assets to other modules using export, and acquire assets from other modules using import. 
  */
-export default function Login({ currentUser, updateCurrentUser }: UserProp) {
+export default function Login({ currentUser, setCurrentUser }: UserProp) {
     /* 
      * What is a Hook? A Hook is a special function that lets you “hook into” React features. 
      * For example, useState is a Hook that lets you add React state to function components.
@@ -39,12 +38,12 @@ export default function Login({ currentUser, updateCurrentUser }: UserProp) {
             .then((obj) => {
                 let user = new User(obj.data.id, obj.data.username, obj.data.role);
                 window.sessionStorage.setItem("user", JSON.stringify(user));
-                
-                navigate("/restaurant");
+                setCurrentUser(user);
+                navigate("/admin")
             })
             .catch(error => {
                 alert(error.response.data.message);
-            });
+            })
 
         setUsername("");
         setPassword("");
@@ -67,7 +66,7 @@ export default function Login({ currentUser, updateCurrentUser }: UserProp) {
                         <input type="password" placeholder="Password" id="password" value={password} onChange={updatePassword} />
                         <button type="submit">Log In</button>
                         <div style={{ textAlign: "center", padding: "20px" }}>
-                            <a href="#" onClick={() => navigate("/signup")} >Create Account</a>
+                            <Link to={"/signup"}>Create Account</Link>
                         </div>
                     </form>
                 </div >

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Signup from './components/signup/Signup';
-import Login from './components/login/Login';
-import Navbar from './components/navbar/Navbar';
-import Restaurant from './components/restaurant/Restaurant';
+import Signup from './pages/signup/Signup';
+import Login from './pages/login/LoginPage';
+import Navbar from './pages/navbar/Navbar';
 import User from './models/User';
+import AdminPage from './pages/admin/AdminPage';
 import './App.css';
 
 function App() {
@@ -20,8 +20,8 @@ function App() {
       <Navbar currentUser={user} />
       <Routes>
         <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/login" element={<Login currentUser={user} updateCurrentUser={setUser} />}></Route>
-        <Route path="/restaurant" element={<Restaurant currentUser={user} />}></Route>
+        <Route path="/login" element={<Login currentUser={user} setCurrentUser={setUser} />}></Route>
+        <Route path="/admin" element={<AdminPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
