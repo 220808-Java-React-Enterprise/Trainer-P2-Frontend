@@ -34,10 +34,9 @@ export default function Admin() {
 
     return (
         <>
-            {userList
-                ?
+            {userList ?
                 <>
-                    <h1 style={{textAlign: "center"}}>All Users</h1>
+                    <h1 style={{ textAlign: "center" }}>All Users</h1>
                     <ul className="profile-list">
                         {userList.map(user => (
                             <li>
