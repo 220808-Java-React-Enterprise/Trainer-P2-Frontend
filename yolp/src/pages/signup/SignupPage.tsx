@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import YOLP_API from "../../utils/ApiConfigs";
 import { useNavigate } from "react-router-dom";
-import "./Signup.css"
+import "./SignupPage.css"
 
 /*
  * export default: a module is a self contained unit that can expose assets to other modules using export, and acquire assets from other modules using import. 

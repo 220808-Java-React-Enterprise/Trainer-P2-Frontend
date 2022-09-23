@@ -5,13 +5,13 @@ import YOLP_API from "../../utils/ApiConfigs";
 import "./LoginPage.css";
 
 interface UserProp {
-    currentUser: Principal | null;
     setCurrentUser: Function;
+    setToken: Function;
 }
 /*
  * export default: a module is a self contained unit that can expose assets to other modules using export, and acquire assets from other modules using import. 
  */
-export default function Login({ currentUser, setCurrentUser }: UserProp) {
+export default function Login({ setCurrentUser, setToken }: UserProp) {
     /* 
      * What is a Hook? A Hook is a special function that lets you “hook into” React features. 
      * For example, useState is a Hook that lets you add React state to function components.
@@ -36,10 +36,13 @@ export default function Login({ currentUser, setCurrentUser }: UserProp) {
             password: password
         }).then((response) => {
             let user = { ...response.data };
+            let token = response.headers["authorization"];
             window.sessionStorage.setItem("user", JSON.stringify(user));
             window.sessionStorage.setItem("auth-token", JSON.stringify(response.headers["authorization"]));
             setCurrentUser(user);
-            navigate("/admin")
+            setToken(token);
+            alert("Login successful!");
+            navigate("/");
         }).catch(error => {
             alert(error.response.data.message);
         })

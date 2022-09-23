@@ -48,7 +48,15 @@ export default function Admin() {
                         ))}
                     </ul>
                 </>
-                : <button onClick={getAllUsers}>View all users</button>}
+                : <div className="wrapper">
+                    <button className="get-all-btn" onClick={getAllUsers}>
+                        View all users
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>}
         </>
     );
 }
