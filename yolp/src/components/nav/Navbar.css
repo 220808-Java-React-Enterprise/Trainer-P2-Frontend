@@ -6,11 +6,11 @@
     background-color: #333;
 }
 
-.nav-left {
+.nav-left li {
     float: left;
 }
 
-.nav-right {
+.nav-right li {
     float: right;
 }
 

@@ -19,9 +19,11 @@ export default function Navbar() {
             <ul className="horizontal">
                 <div className="nav-left">
                     <li><Link to={"/"}>Home</Link></li>
+                    <li><Link to={"/restaurants"}>Restaurants</Link></li>
                 </div>
                 <div className="nav-right">
                     {!auth ? <li><Link to={"/login"}>Login</Link></li> : <li><Link to={"/"} onClick={logout}>Log Out</Link></li>}
+                    <li><Link to={"/admin"}>Admin</Link></li>
                 </div>
             </ul>
         </div>
