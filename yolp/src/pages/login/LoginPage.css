@@ -1,0 +1,12 @@
+.login-form {
+    width: 10%;
+    margin: auto;
+    padding: 20px 20px;
+    text-align: center;
+    background-color: lightblue;
+    border-radius: 10px;
+}
+
+.login-form input, button {
+    margin-bottom: 10px;
+}
