@@ -16,7 +16,7 @@ export default function SignupPage() {
             password2: confirmPwd
         }).then((response) => {
             alert("Account created successfully!");
-            navigate("/");
+            navigate("/login");
         }).catch((error) => alert(error.response.data.message));
 
         setUsername("");

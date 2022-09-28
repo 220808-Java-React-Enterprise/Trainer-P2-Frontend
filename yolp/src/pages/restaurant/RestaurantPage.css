@@ -1,0 +1,15 @@
+.resto {
+    width: 20%;
+    margin: auto;
+    text-align: center;
+}
+
+.resto ul li {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.resto textarea {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}

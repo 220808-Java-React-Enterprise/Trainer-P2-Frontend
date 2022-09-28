@@ -19,7 +19,6 @@ export default function RequireAuth({ allowedRoles }: RoleProp) {
     }
 
     return (
-        !auth ? <Navigate to={"/login"} state={{ from: location }} replace /> :
-            find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />
+        find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />
     );
 }

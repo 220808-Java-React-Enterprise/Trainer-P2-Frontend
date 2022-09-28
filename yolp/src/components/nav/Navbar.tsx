@@ -10,6 +10,7 @@ export default function Navbar() {
 
     function logout() {
         setAuth!(null);
+        window.sessionStorage.removeItem("auth");
         alert("You are now logged out");
         navigate("/");
     }

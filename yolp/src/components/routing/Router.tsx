@@ -7,6 +7,7 @@ import { RestaurantPage } from "../../pages/restaurant/RestaurantPage";
 import RestaurantsPage from "../../pages/restaurant/RestaurantsPage";
 import SignupPage from "../../pages/signup/SignupPage";
 import Layout from "./Layout";
+import PersistAuth from "./PersistAuth";
 import RequireAuth from "./RequireAuth";
 
 export default function Router() {
@@ -18,14 +19,16 @@ export default function Router() {
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
 
-                {/* protected routes */}
-                <Route element={<RequireAuth allowedRoles={["ADMIN", "DEFAULT"]} />} >
-                    <Route path="/Restaurants" element={<RestaurantsPage />} />
-                    <Route path="/Restaurant/:id" element={<RestaurantPage />} />
-                </Route>
+                <Route element={<PersistAuth />}>
+                    {/* protected routes */}
+                    <Route element={<RequireAuth allowedRoles={["ADMIN", "DEFAULT"]} />} >
+                        <Route path="/restaurants" element={<RestaurantsPage />} />
+                        <Route path="/restaurant/:id" element={<RestaurantPage />} />
+                    </Route>
 
-                <Route element={<RequireAuth allowedRoles={["ADMIN"]} />} >
-                    <Route path="/admin" element={<AdminPage />} />
+                    <Route element={<RequireAuth allowedRoles={["ADMIN"]} />} >
+                        <Route path="/admin" element={<AdminPage />} />
+                    </Route>
                 </Route>
 
                 {/* 404 not found */}

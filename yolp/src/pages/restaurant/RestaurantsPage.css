@@ -1,0 +1,10 @@
+.resto-list {
+    max-width: 30%;
+    margin: auto;
+    text-align: center;
+    font-size: x-large;
+}
+
+.resto-list li {
+    margin-bottom: 20px;
+}

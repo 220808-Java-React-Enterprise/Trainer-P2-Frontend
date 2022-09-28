@@ -13,11 +13,12 @@ export default function LoginPage() {
     const navigate = useNavigate();
 
     async function login() {
-        await YOLP_API.post("/users/auth", {
+        await YOLP_API.post("/auth", {
             username: username,
             password: pwd
         }).then((response) => {
             let auth = new Auth(response.data.id, response.data.username, response.data.role, response.headers["authorization"]);
+            window.sessionStorage.setItem("auth", JSON.stringify(auth));
             setAuth!(auth);     
             alert("Login successful!");
             navigate("/");

@@ -7,6 +7,10 @@
     border-radius: 10px;
 }
 
+.signup-form button {
+    padding: 5px;
+}
+
 .signup-form input {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
