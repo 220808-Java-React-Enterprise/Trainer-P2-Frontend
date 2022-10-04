@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import Navbar from './components/nav/Navbar';
 import './App.css';
+import LoadingPage from './pages/loading/LoadingPage';
 
 
 function App() {
@@ -8,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Suspense fallback={<div>Loading...</div>} >
+      <Suspense fallback={<LoadingPage />} >
         <Router />
       </Suspense>
     </>

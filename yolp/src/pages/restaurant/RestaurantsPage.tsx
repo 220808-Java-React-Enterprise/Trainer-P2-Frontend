@@ -3,6 +3,7 @@ import { AuthContext } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
 import YOLP_API from "../../ApiConfig";
 import Restaurant from "../../models/Restaurant";
+import LoadingPage from "../loading/LoadingPage";
 
 export default function RestaurantsPage() {
     const auth = useContext(AuthContext);
@@ -44,7 +45,7 @@ export default function RestaurantsPage() {
                         </ol>
                     </div>
                 </>
-                : <h1>Loading...</h1>}
+                : <LoadingPage />}
         </>
     );
 }
