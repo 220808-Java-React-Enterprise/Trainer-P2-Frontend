@@ -21,7 +21,7 @@ export default function RequireAuth({ allowedRoles }: RoleProp) {
     console.log("Auth ", auth);
 
     return (
-        auth ? (find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />) : <Navigate to={"/login"} state={{ from: location }} replace />
+        auth ? (find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />) : <Navigate to={"/"} state={{ from: location }} replace />
     );
 }
 

@@ -23,7 +23,6 @@ export default function Router() {
                     <Route path="/admin" element={<AdminPage />} />
                 </Route>
 
-
                 {/* 404 not found */}
                 <Route path="*" element={<ErrorPage />} />
             </Route>
