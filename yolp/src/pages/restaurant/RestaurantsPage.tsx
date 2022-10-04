@@ -28,11 +28,12 @@ export default function RestaurantsPage() {
             {restoList ?
                 <>
                     <div className="">
+                        
                         <h1 className="text-center text-5xl m-20 font-medium">"Restaurants"</h1>
-                        <ol className="flex justify-center gap-10">
+                        <ol className="lg:flex justify-center gap-28">
                             {restoList.map((r) => (
                                 <Link to={`/restaurant/${r.id}`}>
-                                    <div className="bg-gradient-to-b from-gray-400 shadow-xl text-center p-10">
+                                    <div className="bg-gradient-to-b from-gray-300 shadow-xl text-center p-10">
                                         <h3 className="text-2xl"><strong>"{r.name}"</strong></h3>
                                         <h3 className="pt-10">{r.street}</h3>
                                         <h3 className="">{r.city} {r.state}</h3>

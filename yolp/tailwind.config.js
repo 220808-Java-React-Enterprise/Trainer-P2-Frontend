@@ -5,7 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily: {}
+      fontFamily: {
+        fontFamily: {
+          ibm: "ibm"
+        }
+      }
     },
   },
   plugins: [],

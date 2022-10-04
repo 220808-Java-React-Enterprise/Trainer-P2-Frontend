@@ -53,30 +53,33 @@ export function RestaurantPage() {
             {resto ?
                 resto.reviews.length ?
                     <>
-                        <div className="bg-gradient-to-b from-gray-400 p-10 m-20 shadow-2xl rounded-sm">
-                            <h1 className="text-center text-5xl m-20 font-medium">"{resto.name}"</h1>
-                            <div className="">
-                                <ul className="flex justify-center gap-20 mb-20">
-                                    {resto.reviews.map((r) => (
-                                        <div className="shadow-xl p-5 rounded-sm">
-                                            <li><strong>Review: </strong>{r.comment}</li>
-                                            <li><strong>Rating: </strong>{r.rating}</li>
-                                            <li><strong>User: </strong>{r.username}</li>
-                                            <br />
-                                        </div>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            <div className="flex flex-col items-center">
-                                <textarea className="mb-10 rounded-sm" cols={50} rows={5} placeholder="Leave a review" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
-                                <br />
-                                <button className="bg-blue-500 px-4 py-2 rounded-md text-white font-medium" onClick={submit}>Submit</button>
-                            </div>
+                        <h1 className="text-center text-5xl m-20 font-medium">"{resto.name}"</h1>
+                        <div className="">
+                            <img className="shadow-xl mx-auto rounded-xl mb-36" src="https://images.unsplash.com/photo-1500868766630-f5477adf6f9c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8aW4lMjBuJTIwb3V0JTIwYnVyZ2VyfGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="" />
+                            <ul className="flex justify-center gap-20 mb-20 mt-20">
+                                {resto.reviews.map((r) => (
+                                    <div className="shadow-xl p-5 rounded-sm bg-slate-50">
+                                        <li><strong>Review: </strong>{r.comment}</li>
+                                        <li><strong>Rating: </strong>{r.rating}</li>
+                                        <li><strong>User: </strong>{r.username}</li>
+                                        <br />
+                                    </div>
+                                ))}
+                            </ul>
                         </div>
 
+                        <div className="flex flex-col items-center">
+                            <textarea className="mb-10 rounded-sm shadow-xl px-5 py-5 bg-slate-100" cols={50} rows={5} placeholder="Leave a review" value={comment} onChange={(e) => setComment(e.target.value)}></textarea>
+                            <br />
+                            <button className="bg-black px-4 py-2 mb-36 rounded-md text-white font-medium shadow-xl" onClick={submit}>Submit</button>
+                        </div>
                     </>
-                    : <h1>No reviews yet!</h1>
+                    : <>
+                        <h1 className="text-center text-5xl m-20 font-medium">"{resto.name}"</h1>
+                        <div className="flex justify-center">
+                            <h1 className="bg-slate-100 p-10 text-center text-2xl font-medium shadow-lg">No reviews yet</h1>
+                        </div>
+                    </>
                 : <h1>Loading...</h1>}
         </>
     );

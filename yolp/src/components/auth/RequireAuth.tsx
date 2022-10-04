@@ -1,4 +1,4 @@
-import { useContext} from "react";
+import { useContext, useState } from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
@@ -18,11 +18,7 @@ export default function RequireAuth({ allowedRoles }: RoleProp) {
         return false;
     }
 
-    console.log("Auth ", auth);
-
     return (
-        auth ? (find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />) : <Navigate to={"/"} state={{ from: location }} replace />
+        auth ? (find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />) : <Navigate to={"/account/login"} state={{ from: location }} replace />
     );
 }
-
-// <find() ? <Outlet /> : <Navigate to={"/unathorized"} state={{ from: location }} replace />

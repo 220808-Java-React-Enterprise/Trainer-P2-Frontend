@@ -6,12 +6,15 @@ import HomePage from "../../pages/home/HomePage";
 import RestaurantsPage from "../../pages/restaurant/RestaurantsPage";
 import Layout from "./Layout";
 import RequireAuth from "../auth/RequireAuth";
+import LoginPage from "../../pages/login/LoginPage";
 
 export default function Router() {    
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route path="/" element={<HomePage />} />
+                {/* public routes */}
+                <Route path="/account/login" element={<LoginPage />} />
 
                 {/* protected routes */}
                 <Route element={<RequireAuth allowedRoles={["ADMIN", "DEFAULT"]} />} >
