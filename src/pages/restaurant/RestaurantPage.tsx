@@ -16,7 +16,7 @@ export function RestaurantPage() {
 
     useEffect(() => {
         getRestaurantById();
-    }, []);
+    });
 
     async function getRestaurantById() {
         await YOLP_API.get("/restaurants/id", {

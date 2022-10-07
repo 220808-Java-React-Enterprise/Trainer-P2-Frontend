@@ -11,7 +11,7 @@ export default function RestaurantsPage() {
 
     useEffect(() => {
         getRestaurantList();
-    }, []);
+    });
 
     async function getRestaurantList() {
         await YOLP_API.get("/restaurants", {
