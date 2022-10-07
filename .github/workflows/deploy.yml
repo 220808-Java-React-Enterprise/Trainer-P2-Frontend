@@ -26,7 +26,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: cd yolp; npm run build
+    - run: npm install
+    - run: npm run build
     
     - name: Deploy to S3
       uses: reggionick/s3-deploy@v3
