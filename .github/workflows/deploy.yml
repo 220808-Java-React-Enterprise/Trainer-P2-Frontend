@@ -1,5 +1,5 @@
-name: dev-build-and-deploy
-# Run workflow only on push to dev branch
+name: CI/CD S3 Bucket
+
 on:
   push:
     branches:
